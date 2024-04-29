@@ -397,8 +397,7 @@ under the License.
                             position: 'top',
                             trigger: 'item',
                             formatter(p) {
-                                const labelEl = p.getTickLabel().childrenRef()[0];
-                                if (labelEl.style.text !== p.name) {
+                                if (p.isEllipsised()) {
                                     return p.name;
                                 }
                                 if (p.tickIndex > 3) {

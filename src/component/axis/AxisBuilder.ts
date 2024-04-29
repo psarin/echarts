@@ -32,8 +32,9 @@ import {shouldShowAllLabels} from '../../coord/axisHelper';
 import { AxisBaseModel } from '../../coord/AxisBaseModel';
 import { ZRTextVerticalAlign, ZRTextAlign, ECElement, ColorString } from '../../util/types';
 import { AxisBaseOption } from '../../coord/axisCommonTypes';
-import Element from 'zrender/src/Element';
+import type Element from 'zrender/src/Element';
 import { PathStyleProps } from 'zrender/src/graphic/Path';
+import type TSpan from 'zrender/src/graphic/TSpan';
 import OrdinalScale from '../../scale/Ordinal';
 import { prepareLayoutList, hideOverlap } from '../../label/labelLayoutHelper';
 
@@ -841,7 +842,7 @@ function buildAxisLabel(
             componentModel: axisModel,
             itemName: formattedLabel,
             formatterParamsExtra: {
-                getTickLabel: () => textEl,
+                isEllipsised: () => formattedLabel !== (textEl.childrenRef()[0] as TSpan).style.text,
                 tickIndex: index
             }
         });
